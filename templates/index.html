@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0　Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>Welcome NexERP</title>
+	<link rel="stylesheet" type="text/css" href="{{static_url("print.css")}}">
+	<script type="text/javascript" src="{{static_url("jquery")}}"></script>
+	<script type="text/javascript" src="{{static_url("jquery.jqprint.js")}}"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+	$("div.list").find('div').hover(
+	function(){	
+	$(this).css({'z-index' : '10'});		
+	$(this).find('img').addClass("hover").stop()
+	.animate({
+					marginTop:'-20px',
+					marginLeft:'-75px',
+					marginRight:'-75px',
+					marginButtom:'-130px',
+					height:'300px',
+					width:'400px',
+					},200);}
+	 ,function(){
+	 	$(this).css({'z-index' : '0'});
+	$(this).find('img').removeClass("hover").stop()
+	.animate({
+					marginTop:'0px',
+					marginLeft:'0px',
+					marginRight:'0px',
+					marginButtom:'0px',
+					height:'150px',
+					width:'250px',
+					},200);}
+	)
+	});
+	
+	</script>
+</head>
+<body>
+<div class="body">
+	<div class="left">
+		
+	</div>
+	<div class="right">
+		<div class="top">
+		
+		</div>
+
+		<div class="list">
+			{% for danju in list %}
+				<div class="{{danju[0]}}">
+					<a href="import.html"><img src="./static/image/{{danju[1]}}"></a>
+				</div>
+			{% end %}
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0　Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-Frameset.dtd">
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="{{static_url("base.css")}}">
+	<script type="text/javascript">
+	$("document").ready(function(){
+	$(".left-nav ul:not(:first)").hide();
+	$(".left-nav:first").addClass("menuchoice");
+	$(".left-nav span").click(function(){
+		$(".menuchoice ul").slideUp("slow");
+		$(".menuchoice").removeClass("menuchoice");
+
+		$(this).parent().addClass("menuchoice");
+		$(".menuchoice ul").show("slow");
+	})
+
+})
+</script>
+</head>
+<body>
+{% for key,vaule in menus.items() %}
+	<div class="left-nav">
+
+			<span>
+			<li><a href="#">{{key}}</a></li>
+			</span>
+			<ul>
+				{% for id in vaule %}
+                    {%  if id in ids %}
+						    <li><a href={{id}}>{{ids[id]}}</a></li>
+			        {% end %}
+				{% end %}
+			</ul>
+<!-- 			<span>
+			<li><a href="#">{{key}}</a></li>
+			</span>
+			<ul>
+				{% for li in vaule %}
+			<li><a href="#">{{li}}</a></li>
+				{% end %}
+			</ul> -->
+
+		<!--<span>-->
+			<!--<li><a href="#">我的工作台</a></li>-->
+		<!--</span>-->
+		<!--<ul >-->
+		<!--<li><a href="">待审核</a></li>-->
+			<!--<li><a href="">shixiang</a></li>-->
+			<!--<li><a href="">shixiang</a></li>-->
+			<!--<li><a href="">hixiang</a></li>-->
+			<!--<li><a href="">shixiang</a></li>-->
+			<!--<li><a href="">shixiang</a></li>-->
+
+		<!--</ul>-->
+	<!--</div>-->
+		<!--<div class="left-nav">-->
+		<!--<span >-->
+			<!--<li><a href="#">我的工作台</a></li>-->
+		<!--</span>-->
+		<!--<ul>-->
+			<!--<li><a href="">daibanshixiang</a></li>-->
+			<!--<li><a href="">shixiang</a></li>-->
+			<!--<li><a href="">shixiang</a></li>-->
+			<!--<li><a href="">hixiang</a></li>-->
+			<!--<li><a href="">shixiang</a></li>-->
+			<!--<li><a href="">shixiang</a></li>-->
+
+		<!--</ul>-->
+	</div>
+{% end %}
+</body>
+</html>

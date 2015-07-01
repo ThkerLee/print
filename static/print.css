@@ -1,0 +1,48 @@
+.body{
+	/*position: relative;*/
+	left: 10px;
+	top: 10px;
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	width: 100%;
+}
+.left{
+
+	float: left;
+	width: 5%;
+	height: 700px;
+	background-image: url(./image/shunfeng.jpg);
+	background-repeat:repeat-y;
+	background-size: 100%;
+}
+.right{
+
+	left: 2px;
+}
+.top{
+	float: right;
+	left: 5%;
+	height: 50px;
+	width: 95%;
+	background-image: url(./image/shunfeng.jpg);
+	background-repeat: repeat;
+	background-size: 100%;
+}
+
+.shunfeng{
+	position: relative;
+	float: left;
+	margin: 20px 0px 0px 40px;
+	height: 150px;
+	width: 250px;
+	/*background-image: url(./image/shunfeng.jpg);*/
+	background-repeat: no-repeat;
+	background-size: 100%;
+
+}
+.shunfeng img{
+	height: 100%;
+	width: 100%;
+
+}
