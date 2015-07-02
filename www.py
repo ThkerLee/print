@@ -5,14 +5,15 @@ import tornado.ioloop
 import tornado.web
 import os.path
 from tornado.options import define,options
-
+from datetime import datetime
 define("port",default=8888,help="run on the given port",type=int)
 define("debug",default=True,help="run in debug mode")
+
 class mainhandler(tornado.web.RequestHandler):
 
 	def get(self):
 		printlist=[
-		("shunfeng","print_demo","shunfeng.jpg")
+		("shunfeng","shunfeng","shunfeng.jpg")
 		,("shunfeng","print_demo","shunfeng.jpg")
 		,("shunfeng","print_demo","shunfeng.jpg")
 		,("shunfeng","print_demo","shunfeng.jpg")
@@ -25,22 +26,31 @@ class mainhandler(tornado.web.RequestHandler):
 		]
 		self.render("index.html",list=printlist)
 class print_demo(tornado.web.RequestHandler):
+	
+
+
 	def get(self,danjumingchen):
+		
 		print_mingchen=list(danjumingchen);
 		print_mingchen=print_mingchen[:-5];
 		print_mingchen=('').join(list(print_mingchen));
-		self.render("list_demo.html",mingchen=print_mingchen)
+		self.render("print_demo.html",mingchen=print_mingchen)
 	def post(self):
 		
+		now=datetime.now()
+		now=now.strftime("%Y%m%d%H%M%S")
 		upload_path=os.path.join(os.path.dirname(__file__),"files")
 
 		file_metas=self.request.files['printcvsfile']
 		for meta in file_metas:
 			filename=meta['filename']
-			filepath=os.path.join(upload_path,filename)
-			with open(filepath,'w') as up:
-				up.write(meta['body'])
-		self.write('Upload Finshed!')
+			filename=filename + now
+
+			# save as a file
+			# filepath=os.path.join(upload_path,filename)
+			# with open(filepath,'w') as up:
+			# 	up.write(meta['body'])
+		self.write('Upload Finshed! $now')
 
 class upload(tornado.web.RequestHandler):
 	pass

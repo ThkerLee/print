@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>Welcome NexERP</title>
+	<link rel="stylesheet" type="text/css" href="{{static_url("print.css")}}">
+	<script type="text/javascript" src="{{static_url("jquery")}}"></script>
+	<script type="text/javascript" src="{{static_url("jquery.jqprint.js")}}"></script>
+</head>
+<body>
+
+	<div class="body">
+		<div class="print_list_top">
+			<div class="print_list_top_form">
+				<form action="upload"  enctype="multipart/form-data" method="post">
+					<p>选择批量文件Csv:<input type="file" name='printcvsfile'/>
+					<input type="submit" value="Submit" /></p>
+				</form>
+			</div>
+		</div>
+		<div class="{{mingchen}}">
+			
+		</div>
+		
+	</div>
+</body>
+</html>
