@@ -12,18 +12,42 @@ class mainhandler(tornado.web.RequestHandler):
 
 	def get(self):
 		printlist=[
-		("shunfeng","shunfeng.jpg")
-		,("shunfeng","shunfeng.jpg")
-		,("shunfeng","shunfeng.jpg")
-		,("shunfeng","shunfeng.jpg")
-		,("shunfeng","shunfeng.jpg")
-		,("shunfeng","shunfeng.jpg")
-		,("shunfeng","shunfeng.jpg")
-		,("shunfeng","shunfeng.jpg")
-		,("shunfeng","shunfeng.jpg")
+		("shunfeng","print_demo","shunfeng.jpg")
+		,("shunfeng","print_demo","shunfeng.jpg")
+		,("shunfeng","print_demo","shunfeng.jpg")
+		,("shunfeng","print_demo","shunfeng.jpg")
+		,("shunfeng","print_demo","shunfeng.jpg")
+		,("shunfeng","print_demo","shunfeng.jpg")
+		,("shunfeng","print_demo","shunfeng.jpg")
+		,("shunfeng","print_demo","shunfeng.jpg")
+		,("shunfeng","print_demo","shunfeng.jpg")
 		
 		]
 		self.render("index.html",list=printlist)
+class print_demo(tornado.web.RequestHandler):
+	def get(self,danjumingchen):
+		print_mingchen=list(danjumingchen);
+		print_mingchen=print_mingchen[:-5];
+		print_mingchen=('').join(list(print_mingchen));
+		self.render("list_demo.html",mingchen=print_mingchen)
+	def post(self):
+		
+		upload_path=os.path.join(os.path.dirname(__file__),"files")
+
+		file_metas=self.request.files['printcvsfile']
+		for meta in file_metas:
+			filename=meta['filename']
+			filepath=os.path.join(upload_path,filename)
+			with open(filepath,'w') as up:
+				up.write(meta['body'])
+		self.write('Upload Finshed!')
+
+class upload(tornado.web.RequestHandler):
+	pass
+
+
+
+
 		# self.render("index-model.html")
 # class top_nav(tornado.web.RequestHandler):
 
@@ -58,6 +82,9 @@ def main():
 	app=tornado.web.Application(
 		[
 		(r"/",mainhandler),
+		(r"/list/upload",print_demo),
+	 	(r"/list/(.*)",print_demo),
+		
 		# (r"/templates/left-nav.html",left_nav),
 		# (r"/templates/right-nav.html",right_nav),
 		# (r"/templates/top-nav.html",top_nav),
