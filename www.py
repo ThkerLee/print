@@ -1,6 +1,6 @@
 
 #coding=utf-8
-
+import csv
 import tornado.ioloop
 import tornado.web
 import os.path
@@ -45,47 +45,23 @@ class print_demo(tornado.web.RequestHandler):
 		for meta in file_metas:
 			filename=meta['filename']
 			filename=filename + now
-
+			#/////////////////
+			content=meta['body']
 			# save as a file
 			# filepath=os.path.join(upload_path,filename)
 			# with open(filepath,'w') as up:
 			# 	up.write(meta['body'])
-		self.write('Upload Finshed! $now')
+			#/////////
+			reader=csv.reader(content)
+
+			for line in reader:
+				for word in line:					
+					self.write(word)
+				self.write('</br>')
+		
 
 class upload(tornado.web.RequestHandler):
 	pass
-
-
-
-
-		# self.render("index-model.html")
-# class top_nav(tornado.web.RequestHandler):
-
-# 	def get(self):
-# 		self.render("top-nav.html")
-
-# class left_nav(tornado.web.RequestHandler):
-
-# 	def get(self):
-# 		# leftmenu={u'我的工作台':(u'待审核单据',u'我的单据',u'已审核单据'),}
-# 		# self.render('left-nav.html',menus=leftmenu)
-# 		leftmenu={u'我的工作台':('id_daishenhe','id_wodedanju','id_yishenhe'),}
-# 		leftids={'id_daishenhe':u'待审核单据','id_wodedanju':u'我的单据','id_yishenhe':u'已审核单据',}
-# 		self.render('left-nav.html',menus=leftmenu,ids=leftids)
-# class right_nav(tornado.web.RequestHandler):
-
-# 	def get(self):
-# 		self.render("right-nav.html")
-# class right_mini_nav(tornado.web.RequestHandler):
-
-# 	def get(self):
-# 		self.render("right-mini-nav.html")
-
-# class right_content(tornado.web.RequestHandler):
-
-# 	def get(self):
-# 		self.render("right-conent.html")
-
 
 
 def main():
