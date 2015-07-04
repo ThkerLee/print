@@ -46,13 +46,18 @@
 	width: 100%;
 
 }
-.print_list_top{
+.print_demo_top{
 	width: 100%;
 	height: 25px;
 	
 
 }
-.print_list_top_form{
+.print_demo_top_form{
 	margin: 0px auto;
 	width: 450px;
+}
+.print_detail{
+	margin: 0px auto;
+	/*1px=25cm*/
+	width: 525px;       
 }

@@ -5,19 +5,28 @@
 	<link rel="stylesheet" type="text/css" href="{{static_url("print.css")}}">
 	<script type="text/javascript" src="{{static_url("jquery")}}"></script>
 	<script type="text/javascript" src="{{static_url("jquery.jqprint.js")}}"></script>
+	<script type="text/javascript">
+		// $(document).ready(function(){
+		// 	$("#upclick").click(function(){
+		// 		// $.post('upload',)
+		// 					})
+		// }
+
+	</script>
 </head>
 <body>
 
 	<div class="body">
-		<div class="print_list_top">
-			<div class="print_list_top_form">
-				<form action="upload"  enctype="multipart/form-data" method="post">
+		<div class="print_demo_top">
+			<div class="print_demo_top_form">
+				<form action=""  enctype="multipart/form-data" method="post" target="detail_frame">
 					<p>选择批量文件Csv:<input type="file" name='printcvsfile'/>
-					<input type="submit" value="Submit" /></p>
+					<input type="submit" id='upclick' value="Submit" /></p>
 				</form>
 			</div>
 		</div>
-		<div class="{{mingchen}}">
+		<div class="printdetail">
+			
 			
 		</div>
 		
