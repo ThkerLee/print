@@ -9,14 +9,11 @@
 </head>
 <body>
 <div class="print_detail">
-{%for line in printdata %}
-	{%for key in line %}
-		{{key}}
-
-	{% end %}
-	<br/>
-{% end %}
-
+{% for line in printdata%}
+	{% for key,value in line.items()%}
+		{{key}},{{value}}
+	{%end%}
+{%end%}
 </div>
 
 </body>

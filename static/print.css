@@ -30,7 +30,7 @@
 	background-size: 100%;
 }
 
-.shunfeng{
+.listpic{
 	position: relative;
 	float: left;
 	margin: 20px 0px 0px 40px;
@@ -41,7 +41,7 @@
 	background-size: 100%;
 
 }
-.shunfeng img{
+.listpic img{
 	height: 100%;
 	width: 100%;
 
@@ -58,6 +58,9 @@
 }
 .print_detail{
 	margin: 0px auto;
-	/*1px=25cm*/
-	width: 525px;       
+	/*1px=25cm,23cm*/
+	/*1pt=0.35mm,23cm=676.5pt*/
+	width: 653.4pt;  
+	font-size: 15px; 
+	background-color: red;    
 }

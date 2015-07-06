@@ -13,15 +13,9 @@ class mainhandler(tornado.web.RequestHandler):
 
 	def get(self):
 		printlist=[
-		("shunfeng","detail","shunfeng.jpg")
-		,("shunfeng","detail","shunfeng.jpg")
-		,("shunfeng","detail","shunfeng.jpg")
-		,("shunfeng","detail","shunfeng.jpg")
-		,("shunfeng","detail","shunfeng.jpg")
-		,("shunfeng","detail","shunfeng.jpg")
-		,("shunfeng","detail","shunfeng.jpg")
-		,("shunfeng","detail","shunfeng.jpg")
-		,("shunfeng","detail","shunfeng.jpg")
+		("listpic","detail","shunfeng.jpg")
+		,("listpic","detail","shunfeng.jpg")
+		
 		
 		]
 		self.render("index.html",list=printlist)
@@ -61,17 +55,41 @@ class print_demo(tornado.web.RequestHandler):
 			# self.write(line)
 			head=list(reader.next())
 			reader=list(reader)
-			i=0
+			i=1
+			x=0
+			y=0
 			sourcedata=list()
-			tmpdate=list()
+			shoujian=dict()
+			fajian=dict()
+			dic=dict()
+			tmp=dict()
 			for line in reader:
-				for value in line:
-					tmpdate.append(head[i])
-					tmpdate.append(value)
+				for key in line:
+
+					if head[i]=="发件方":
+						dic=fajian
+						x=0
+					elif head[i]=="收件方":
+						dic=shoujian
+						y=0
+					
+					elif key !="":
+						dic[head[i]]=key
 					i=i+1
 				i=0
-				sourcedata.append(tmpdate)
-				tmpdate=list()
+				tmp['发件方']=fajian
+				tmp['收件方']=shoujian
+			sourcedata.append(tmp)
+
+			# for line in reader:
+			# 	if head[0]="发件方":
+			# 		for value in line:
+			# 			tmpdate.append(head[i])
+			# 			tmpdate.append(value)
+			# 			i=i+1
+			# 		i=0
+			# 		sourcedata.append(tmpdate)
+			# 		tmpdate=list()
 			# for line in reader:
 			# 	sourcedata.append(line)
 			 	# detaildic=dict((top,value)for top,value in nextline)
