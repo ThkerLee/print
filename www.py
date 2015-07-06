@@ -52,23 +52,31 @@ class print_demo(tornado.web.RequestHandler):
 			#save as a file
 			filepath=os.path.join(upload_path,filename)
 			with open(filepath,'w') as up:
+	
 				up.write(meta['body'])
 			#/////////
 			datafile=open(filepath,'r')
-			# head=datafile.readline()
-			reader=csv.reader(datafile, delimiter=' ')	
+			reader=csv.reader(datafile)	
 			# line=('').join(list(head))
 			# self.write(line)
-			head=reader.next()
-			detaildata=list()
+			head=list(reader.next())
+			reader=list(reader)
+			i=0
 			sourcedata=list()
-			for   line in reader:
-				sourcedata.append(line)
-			for line in sourcedata:
-				nextline=zip(head,line)
-				detaildata.append(nextline)
-				pass
-			self.render("print_printdetal.html",printdata=sourcedata,mingchen=danjumingchen)
+			tmpdate=list()
+			for line in reader:
+				for value in line:
+					tmpdate.append(head[i])
+					tmpdate.append(value)
+					i=i+1
+				i=0
+				sourcedata.append(tmpdate)
+				tmpdate=list()
+			# for line in reader:
+			# 	sourcedata.append(line)
+			 	# detaildic=dict((top,value)for top,value in nextline)
+				
+			self.render("print_printdetal.html",printdata=sourcedata,top=head,mingchen=danjumingchen)
 			# for line in reader:
 			# 	line=('').join(list(line))
 			# 	self.write(line)
