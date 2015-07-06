@@ -55,7 +55,7 @@ class print_demo(tornado.web.RequestHandler):
 			# self.write(line)
 			head=list(reader.next())
 			reader=list(reader)
-			i=1
+			i=0
 			x=0
 			y=0
 			sourcedata=list()

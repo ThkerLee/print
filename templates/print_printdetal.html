@@ -9,11 +9,63 @@
 </head>
 <body>
 <div class="print_detail">
-{% for line in printdata%}
+<!-- {{printdata}} <br/>-->
+<!-- 发件方,客户号码,始发地,公司名称,地址,寄件人签名,电话,委托货物内容,备注,承运人 -->
+{% if printdata[0]['发件方'].has_key('客户号码')%}
+	<label>{{printdata[0]['发件方']['客户号码']}}</label>
+{%end%}
+{% if printdata[0]['发件方'].has_key('始发地')%}
+	<label>{{printdata[0]['发件方']['始发地']}}</label>
+{%end%}
+{% if printdata[0]['发件方'].has_key('公司名称')%}
+	<label>{{printdata[0]['发件方']['公司名称']}}</label>
+{%end%}
+{% if printdata[0]['发件方'].has_key('地址')%}
+	<label>{{printdata[0]['发件方']['地址']}}</label>
+{%end%}
+{% if printdata[0]['发件方'].has_key('寄件人签名')%}
+	<label>{{printdata[0]['发件方']['寄件人签名']}}</label>
+{%end%}
+{% if printdata[0]['发件方'].has_key('电话')%}
+	<label>{{printdata[0]['发件方']['电话']}}</label>
+{%end%}
+{% if printdata[0]['发件方'].has_key('委托货物内容')%}
+	<label>{{printdata[0]['发件方']['委托货物内容']}}</label>
+{%end%}
+{% if printdata[0]['发件方'].has_key('备注')%}
+	<label>{{printdata[0]['发件方']['备注']}}</label>
+{%end%}
+{% if printdata[0]['发件方'].has_key('承运人')%}
+	<label>{{printdata[0]['发件方']['承运人']}}</label>
+{%end%}
+
+<!-- 收件方,目的地,日期,公司名称,地址,收件人,电话,体积重量,件数,重量,非货样,现付,货样,月结,速递,到付,空运,其它,总计 -->
+<br/>
+<label>{{printdata[0]['收件方']['目的地']}}</label>
+<label>{{printdata[0]['收件方']['日期']}}</label>
+<label>{{printdata[0]['收件方']['公司名称']}}</label>
+<label>{{printdata[0]['收件方']['地址']}}</label>
+<label>{{printdata[0]['收件方']['收件人']}}</label>
+<label>{{printdata[0]['收件方']['电话']}}</label>
+<label>{{printdata[0]['收件方']['体积重量']}}</label>
+<label>{{printdata[0]['收件方']['件数']}}</label>
+<label>{{printdata[0]['收件方']['重量']}}</label>
+<label>{{printdata[0]['收件方']['非货样']}}</label>
+<label>{{printdata[0]['收件方']['现付']}}</label>
+<label>{{printdata[0]['收件方']['货样']}}</label>
+<label>{{printdata[0]['收件方']['月结']}}</label>
+<label>{{printdata[0]['收件方']['速递']}}</label>
+<label>{{printdata[0]['收件方']['到付']}}</label>
+<label>{{printdata[0]['收件方']['空运']}}</label>
+<label>{{printdata[0]['收件方']['其它']}}</label>
+<label>{{printdata[0]['收件方']['总计']}}</label>
+
+
+<!-- {% for line in printdata%}
 	{% for key,value in line.items()%}
 		{{key}},{{value}}
 	{%end%}
-{%end%}
+{%end%} -->
 </div>
 
 </body>
