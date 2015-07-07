@@ -13,16 +13,16 @@ class mainhandler(tornado.web.RequestHandler):
 
 	def get(self):
 		printlist=[
-		("listpic","detail","shunfeng.jpg")
-		,("listpic","detail","shunfeng.jpg")
+		("listpic","yuezhong","yuezhong.jpg")
+		,("listpic","yuezhong","yuezhong.jpg")
 		
 		
 		]
 		self.render("index.html",list=printlist)
 
 class print_demo_frame(tornado.web.RequestHandler):
-	def get(self):
-		self.render("print_demo_frame.html")
+	def get(self,danjumingchen):
+		self.render("print_demo_frame.html",mingchen=danjumingchen)
 
 class print_demo(tornado.web.RequestHandler):
 
@@ -33,7 +33,16 @@ class print_demo(tornado.web.RequestHandler):
 		print_mingchen=('').join(list(print_mingchen));
 		self.render("print_demo.html",mingchen=print_mingchen)
 	def post(self,danjumingchen):
-		
+		yuezhong=(
+			{'发件方':('客户号码','始发地','公司名称','地址','寄件人签名','电话','委托货物内容','备注','承运人')}
+			,{'收件方':('目的地','日期','公司名称','地址','收件人','电话','体积重量','件数','重量')}
+			,{'其他':('非货样','现付','货样','月结','速递','到付','空运')}
+			,{'打勾':('非货样','现付','货样','月结','速递','到付','空运')}
+			,{'relation':{'客户号码':'月结'}}
+		)
+
+		if danjumingchen=='yuezhong.html':
+			xiangmu1=yuezhong
 		now=datetime.now()
 		now=now.strftime("%Y%m%d%H%M%S")
 		upload_path=os.path.join(os.path.dirname(__file__),"files")
@@ -61,6 +70,7 @@ class print_demo(tornado.web.RequestHandler):
 			sourcedata=list()
 			shoujian=dict()
 			fajian=dict()
+			qita=dict()	
 			dic=dict()
 			tmp=dict()
 			for line in reader:
@@ -72,29 +82,19 @@ class print_demo(tornado.web.RequestHandler):
 					elif head[i]=="收件方":
 						dic=shoujian
 						y=0
-					
+					elif head[i]=="其他":
+						dic=qita
 					elif key !="":
 						dic[head[i]]=key
 					i=i+1
 				i=0
-				tmp['发件方']=fajian
-				tmp['收件方']=shoujian
-			sourcedata.append(tmp)
+				tmp['发件方']=fajian.copy()
+				tmp['收件方']=shoujian.copy()
+				tmp['其他']=qita.copy()
+				sourcedata.append(tmp.copy())
+				tmp.clear()			
 
-			# for line in reader:
-			# 	if head[0]="发件方":
-			# 		for value in line:
-			# 			tmpdate.append(head[i])
-			# 			tmpdate.append(value)
-			# 			i=i+1
-			# 		i=0
-			# 		sourcedata.append(tmpdate)
-			# 		tmpdate=list()
-			# for line in reader:
-			# 	sourcedata.append(line)
-			 	# detaildic=dict((top,value)for top,value in nextline)
-				
-			self.render("print_printdetal.html",printdata=sourcedata,top=head,mingchen=danjumingchen)
+		self.render("print_printdetal.html",printdata=sourcedata,mingchen=danjumingchen,xiangmu=xiangmu1)
 			# for line in reader:
 			# 	line=('').join(list(line))
 			# 	self.write(line)
@@ -110,9 +110,9 @@ def main():
 	app=tornado.web.Application(
 		[
 		(r"/",mainhandler),
-		(r"/detail.html",print_demo_frame),
-		(r"/list/upload",print_demo),
-	 	(r"/list/(.*)",print_demo),
+ 
+	 	(r"/detail/(.*)",print_demo_frame),
+	 	(r"/frame/(.*)/print_demo.html",print_demo)
 	 	
 
 		
