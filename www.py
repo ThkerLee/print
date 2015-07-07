@@ -40,8 +40,8 @@ class print_demo(tornado.web.RequestHandler):
 			,{'打勾':('非货样','现付','货样','月结','速递','到付','空运')}
 			,{'relation':{'客户号码':'月结'}}
 		)
-
-		if danjumingchen=='yuezhong.html':
+		danjumingchen=danjumingchen[:-5]
+		if danjumingchen=='yuezhong':
 			xiangmu1=yuezhong
 		now=datetime.now()
 		now=now.strftime("%Y%m%d%H%M%S")

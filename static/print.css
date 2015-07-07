@@ -57,13 +57,90 @@
 	width: 450px;
 }
 .print_detail{
-	margin: 0px auto;
+	margin: 40px auto 0px auto;
 	/*1px=25cm,23cm*/
 	/*1pt=0.35mm,23cm=676.5pt*/
-	width: 653.4pt;  
-	font-size: 15px; 
-	background-color: red;    
+	font-size: 18px;   
 }
+.print{
+	margin: 0px auto 0px auto;
+}
+.print input{
+	margin: 0px auto;
+}
+ul{	
+	float: left;
+	list-style-type: none;
+}
+li{
+	display: block;
+}
+
 .yuezhong{
-	height: 700px;
+	position: relative;
+	margin: 0px auto 0px auto;
+	width: 850px;
+	height: 560px;
+	background-image: url(./image/shunfeng.jpg);
+	background-repeat: no-repeat;
+	background-size: 95%;
+}
+.fajianfang{
+	width: 220px;
+}
+.shoujianfang{
+	width: 200px;
+}
+.qita{
+	width: 110pt;
+}
+.shoujianfang div{
+	height: 28px;
+}
+.qita div {
+	height: 28px;
+}
+.fajianfang  {
+
+}
+.fajianfang .客户号码{
+	position: absolute;
+
+	top: 120px;
+}
+.fajianfang .始发地{
+	position: absolute;
+	top: 140px;
+}
+.fajianfang .备注{
+	position: absolute;
+	top: 160px;
+}
+.fajianfang .月结{
+	position: absolute;
+	top: 180px;
+}
+.fajianfang .委托货物内容{
+	position: absolute;
+	top: 200px;
+}
+.fajianfang .电话{
+	position: absolute;
+	top: 220px;
+}
+.fajianfang .公司名称{
+	position: absolute;
+	top: 240px;
+}
+.fajianfang .地址{
+	position: absolute;
+	top: 260px;
+}
+.fajianfang .寄件人签名{
+	position: absolute;
+	top: 280px;
+}
+.fajianfang .承运人{
+	position: absolute;
+	top: 300px;
 }

@@ -6,19 +6,8 @@
 	<link rel="stylesheet" type="text/css" href="{{static_url("print.css")}}">
 	<script type="text/javascript" src="{{static_url("jquery")}}"></script>
 	<script type="text/javascript" src="{{static_url("jquery.jqprint.js")}}"></script>
-	<script type="text/javascript">
-	$(document).ready(function(){ 
-	$("#printclick").click(function(){
-		$(".print_detail").jqprint();
-	})
-	});
-
-	</script>
 </head>
 <body>
-<div class="print">
-	<input id="printclick" type="button" value="打印" />
-</div>
 <div class="print_detail">
 <!-- {{printdata}} <br/>-->
 
@@ -32,12 +21,13 @@
 {%set dagou=list(xiangmu[3]['打勾'])%}
 {%set qita=tuple(xiangmu[2]['其他'])%}
 {%set relation=xiangmu[4]['relation']%}
-
-
+<div>
+	<input type="button" value="打印" />
+</div>
 
 	{% for line in printdata %}
 <div class="{{mingchen}}">
-	<ul class="fajianfang">
+	<div class="fajianfang">
 		{%for lline,vaule in line['发件方'].items()%}
 		
 			{%if lline in fajianfang %}
@@ -45,23 +35,23 @@
 					{%set relationtmp=relation[lline]%}
 					{%if relationtmp in qita%}			
 						{%if relationtmp in dagou%}		
-						<li class="{{relationtmp}}">{{relationtmp}}dagou</li>	
+						<div class="{{relationtmp}}">{{relationtmp}}dagou</div>	
 							{%if relationtmp in qita%}
 								{%set del line['其他'][relationtmp]%}
 							{%end %}
 						{%else%}
-						<li class="{{relationtmp}}">{{vaule}}</li>
+						<div class="{{relationtmp}}">{{vaule}}</div>
 						{%set line['其他']["{{relationtmp}}"]%}
 						{%end%}
 					{%end%}			
 				{%end%}		
-				<li class="{{lline}}">"{{lline}}":{{vaule}}</li>			
+				<div class="{{lline}}">"{{lline}}":{{vaule}}</div>			
 			{%else %}
 				<label>未知的列名:{{lline}}</label>
 			{%end%}
 		{%end%}	
-	</ul>
-	<ul class="shoujianfang">
+	</div>
+	<div class="shoujianfang">
 		{%for lline,vaule in line['收件方'].items()%}
 		
 		
@@ -70,38 +60,38 @@
 					{%set relationtmp=relation[lline]%}
 					{%if relationtmp in qita%}	
 						{%if relationtmp in dagou%}					
-						<li class="{{relationtmp}}">{{relationtmp}}dagou</li>	
+						<div class="{{relationtmp}}">{{relationtmp}}dagou</div>	
 							{%if relationtmp in qita%}
 								{%set del line['其他'][relationtmp]%}
 							{%end %}
 						{%else%}
-						<li class="{{relationtmp}}">{{vaule}}</li>
+						<div class="{{relationtmp}}">{{vaule}}</div>
 						{%set line['其他']["{{relationtmp}}"]%}
 					{%end%}			
 				{%end%}
 				{%end%}
-				<li class="{{lline}}">"{{lline}}":{{vaule}}</li>
+				<div class="{{lline}}">"{{lline}}":{{vaule}}</div>
 				{%else %}
 				<label>未知的列名:{{lline}}</label>
 			{%end%}
 		
 		{%end%}
-	</ul>
-	<ul class="qita">
+	</div>
+	<div class="qita">
 		{%for lline,vaule in line['其他'].items()%}		
 			{%if lline in qita %}
 				{%if  lline in relation%}
 					{%set relationtmp=relation[lline]%}
 					{%if relationtmp in dagou%}					
-						<li class="{{relationtmp}}">{{relationtmp}}</li>				
+						<div class="{{relationtmp}}">{{relationtmp}}</div>				
 					{%end%}
 				{%end%}
-				<li class="{{lline}}">"{{lline}}":{{vaule}}</li>
+				<div class="{{lline}}">"{{lline}}":{{vaule}}</div>
 				
 			{%end%}
 		
 		{%end%}
-	</ul>
+	</div>
 </div>
 	{%end%}
 
