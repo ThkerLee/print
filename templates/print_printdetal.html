@@ -6,29 +6,51 @@
 	<link rel="stylesheet" type="text/css" href="{{static_url("print.css")}}">
 	<script type="text/javascript" src="{{static_url("jquery")}}"></script>
 	<script type="text/javascript" src="{{static_url("jquery.jqprint.js")}}"></script>
-	<script type="text/javascript">
-	$(document).ready(function(){ 
-	$("#printclick").click(function(){
-		$(".print_detail").jqprint({operaSupport: false})
-	})
-	});
+<script type="text/javascript">
+	var hkey_root,hkey_path,hkey_key;
+	hkey_root="HKEY_CURRENT_USER";
+	<!--地址的写法很严格的用双斜杠-->
+	hkey_path="/Software/Microsoft/Internet Explorer/PageSetup";
+	//设置网页打印的页眉页脚为空
+	function pagesetup_null(){
+	try{
+		var RegWsh = new ActiveXObject("WScript.Shell");
+		hkey_key="/header";
+		RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"");
+		hkey_key="/footer";
+		RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"");
+		hkey_key = "margin_top";
+        RegWsh.RegWrite(hkey_root + hkey_path + hkey_key, "0");
+        hkey_key = "margin_bottom";
+        RegWsh.RegWrite(hkey_root + hkey_path + hkey_key, "0");
+        hkey_key = "margin_left";
+        RegWsh.RegWrite(hkey_root + hkey_path + hkey_key, "0");
+        hkey_key = "margin_right";
+        RegWsh.RegWrite(hkey_root + hkey_path + hkey_key, "0");
+		}catch(e){}
+}
+</script>
+<style media="print">
+	<!--
+	.noprint{display:none;}
+	.pagenext{page-break-after:always;}
+	-->
+</style>
 
-	</script>
 </head>
 <body>
-<!-- <div class="print">
+<!--  <div class="print">
 	<input id="printclick" type="button" value="打印" />
-</div> -->
+</div> 
+ -->
+ <div class="print">
+ 	<object classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2" id="wb" height="0" width="0"></object>
 
-<div class="print">
- <object classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"　　id='wb'></object>
+<!--  	<input id="printclick" class="noprint" type="button" value="打印" onclick="pagesetup_null();document.all.wb.ExecWB(6,1)" /> -->
 
-<input　 type='button'　value='打印'　onclick='javascript:wb.ExecWB(6,1)'/>　　   
-
-<input　type='button'　value='打印预览'　onclick='javascript:wb.ExecWB(7,1)'/>　　   
-  
-<input　type='button'　value='页面设置'　onclick='javascript:wb.ExecWB(8,1)'/> 
-</div>
+ 	<input type="button" class="noprint" value="打印" onclick="pagesetup_null();document.all.wb.ExecWB(7,1)" />
+ 	<input type="button" class="noprint" value="页面设置" onclick="pagesetup_null();document.all.wb.ExecWB(8,1)" />
+</div> 
 
 <div class="print_detail"> 
 
@@ -48,7 +70,7 @@
 
 
 	{% for line in printdata %}
-<div class="{{mingchen}}">
+<div class="{{mingchen}}" ><img src="/static/image/{{mingchen}}.jpg">
 	<ul class="fajianfang">
 		{%for lline,vaule in line['发件方'].items()%}
 		{%if vaule !=" "%}

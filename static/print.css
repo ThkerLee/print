@@ -1,6 +1,8 @@
-/*96dpi/2.54cm=37.79 px*/
-/*72dpi/2.54cm=28.34px*/
-/*xxpx  *   xxcm =xxpx*/
+
+/*16:10  0.8480;
+4:3 	0.8000;
+16:9   0.8716
+15inc 1024*768   4:3  	15*2.54cm*0.8000/1024=0.0297cm*/
 .body{
 	/*position: relative;*/
 	left: 10px;
@@ -58,16 +60,24 @@
 	width: 450px;
 }
 .print_detail{
-	margin: 40px auto 0px auto;
+	margin: 0px auto 0px auto;
 	/*1px=25cm,23cm*/
 	/*1pt=0.35mm,23cm=676.5pt*/
 	font-size: 18px; 
-	width: 900px;  
+	width: 905.5px;  
+	background-color: red
 }
 .print{
+	position: absolute;
+	top: 20px;
+	left: 500px;
 	margin: 0px auto 0px auto;
+	z-index: 9;
 }
 .print input{
+	margin: 0px auto;
+}
+.print object{
 	margin: 0px auto;
 }
 ul{	
@@ -81,14 +91,19 @@ li{
 .yuezhong{
 	position: relative;
 	margin: 0px auto 0px auto;
-	width: 873px;
+	width: 905.5px;
 	/*width: 654.8px;*/
-	height: 481.8px;
+	height: 500px;
 /*	height: 359.9px;*/
-	background-image: url(./image/yuezhong.jpg);
+	/*background-image: url(./image/yuezhong.jpg);*/
 	background-repeat: no-repeat;
 	background-size: 95%;
 
+
+}
+.yuezhong img{
+	height: 100%;
+	width: 100%;
 
 }
 .fajianfang{
@@ -119,15 +134,15 @@ li{
 }
 .fajianfang .始发地{
 	position: absolute;
-	top: 108px;
+	top: 125px;
 	width: 170px;
 	height: 20px;
 
-	left: 160px;
+	left: 175px;
 }
 .fajianfang .公司名称{
 	position: absolute;
-	top: 132px;
+	top: 150px;
 	left: 108px;
 	height: 45px;
 	width: 220px;
