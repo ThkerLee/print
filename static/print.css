@@ -1,3 +1,6 @@
+/*96dpi/2.54cm=37.79 px*/
+/*72dpi/2.54cm=28.34px*/
+/*xxpx  *   xxcm =xxpx*/
 .body{
 	/*position: relative;*/
 	left: 10px;
@@ -12,9 +15,7 @@
 	float: left;
 	width: 5%;
 	height: 700px;
-	background-image: url(./image/yuezhong.jpg);
-	background-repeat:repeat-y;
-	background-size: 100%;
+	background-color: blue;
 }
 .right{
 
@@ -60,7 +61,8 @@
 	margin: 40px auto 0px auto;
 	/*1px=25cm,23cm*/
 	/*1pt=0.35mm,23cm=676.5pt*/
-	font-size: 18px;   
+	font-size: 18px; 
+	width: 900px;  
 }
 .print{
 	margin: 0px auto 0px auto;
@@ -79,11 +81,15 @@ li{
 .yuezhong{
 	position: relative;
 	margin: 0px auto 0px auto;
-	width: 850px;
-	height: 560px;
-	background-image: url(./image/shunfeng.jpg);
+	width: 873px;
+	/*width: 654.8px;*/
+	height: 481.8px;
+/*	height: 359.9px;*/
+	background-image: url(./image/yuezhong.jpg);
 	background-repeat: no-repeat;
 	background-size: 95%;
+
+
 }
 .fajianfang{
 	width: 220px;
@@ -105,42 +111,135 @@ li{
 }
 .fajianfang .客户号码{
 	position: absolute;
-
-	top: 120px;
+	left: 100px;
+	top: 108px;
+	height: 20px;
+	width: 60px;
+	background-color: red;
 }
 .fajianfang .始发地{
 	position: absolute;
-	top: 140px;
-}
-.fajianfang .备注{
-	position: absolute;
-	top: 160px;
-}
-.fajianfang .月结{
-	position: absolute;
-	top: 180px;
-}
-.fajianfang .委托货物内容{
-	position: absolute;
-	top: 200px;
-}
-.fajianfang .电话{
-	position: absolute;
-	top: 220px;
+	top: 108px;
+	width: 170px;
+	height: 20px;
+
+	left: 160px;
 }
 .fajianfang .公司名称{
 	position: absolute;
-	top: 240px;
+	top: 132px;
+	left: 108px;
+	height: 45px;
+	width: 220px;
 }
 .fajianfang .地址{
 	position: absolute;
-	top: 260px;
+	left: 108px;
+	top: 180px;
+	height: 80px;
+	width: 220px;
+
 }
 .fajianfang .寄件人签名{
 	position: absolute;
-	top: 280px;
+	left: 135px;
+	top: 260px;
+	height: 25px;
+	width: 195px;
+
 }
-.fajianfang .承运人{
+.fajianfang .电话{
 	position: absolute;
-	top: 300px;
+	left: 80px;
+	top: 290px;
+	height: 20px;
+	width: 240px;
+
+}
+.fajianfang .委托货物内容{
+	position: absolute;
+	left: 108px;
+	top: 320px;
+	height: 20px;
+	width: 220px;
+
+}
+.fajianfang .备注{
+	position: absolute;
+	left: 100px;
+	top: 350px;
+	height: 20px;
+	width: 228px;
+
+
+}
+.shoujianfang .目的地{
+	position: absolute;
+	top: 108px;
+	width: 90px;
+	height: 20px;
+	left: 340px;
+
+}
+.shoujianfang .日期{
+	position: absolute;
+	top: 108px;
+	width: 160px;
+	height: 20px;
+	left: 440px;
+
+}
+.shoujianfang .公司名称{
+	position: absolute;
+	top: 130px;
+	width: 230px;
+	height: 50px;
+	left: 370px;
+
+}
+.shoujianfang .地址{
+	position: absolute;
+	top: 185px;
+	width: 230px;
+	height: 75px;
+	left: 370px;
+
+}
+.shoujianfang .收件人{
+	position: absolute;
+	left: 360px;
+	top: 260px;
+	height: 25px;
+	width: 220px;
+
+}
+.shoujianfang .电话{
+	position: absolute;
+	left: 355px;
+	top: 290px;
+	height: 20px;
+	width: 240px;
+
+}
+.shoujianfang .体积重量{
+	position: absolute;
+	left: 360px;
+	top: 320px;
+	height: 20px;
+	width: 240px;
+
+}
+.qita .件数{
+	position: absolute;
+	top: 165px;
+	width: 230px;
+	height: 50px;
+	left: 610px;
+}
+.qita .重量{
+	position: absolute;
+	top: 165px;
+	width: 230px;
+	height: 50px;
+	left: 680px;
 }

@@ -9,17 +9,29 @@
 	<script type="text/javascript">
 	$(document).ready(function(){ 
 	$("#printclick").click(function(){
-		$(".print_detail").jqprint();
+		$(".print_detail").jqprint({operaSupport: false})
 	})
 	});
 
 	</script>
 </head>
 <body>
-<div class="print">
+<!-- <div class="print">
 	<input id="printclick" type="button" value="打印" />
+</div> -->
+
+<div class="print">
+ <object classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"　　id='wb'></object>
+
+<input　 type='button'　value='打印'　onclick='javascript:wb.ExecWB(6,1)'/>　　   
+
+<input　type='button'　value='打印预览'　onclick='javascript:wb.ExecWB(7,1)'/>　　   
+  
+<input　type='button'　value='页面设置'　onclick='javascript:wb.ExecWB(8,1)'/> 
 </div>
-<div class="print_detail">
+
+<div class="print_detail"> 
+
 <!-- {{printdata}} <br/>-->
 
 <!-- ({发件方:{客户号码:tt,始发地:ttt,}},{收件方:{目的地:tt,日期:ttt;}}
@@ -39,33 +51,46 @@
 <div class="{{mingchen}}">
 	<ul class="fajianfang">
 		{%for lline,vaule in line['发件方'].items()%}
-		
+		{%if vaule !=" "%}
 			{%if lline in fajianfang %}
 				{%if  lline in relation%}
 					{%set relationtmp=relation[lline]%}
-					{%if relationtmp in qita%}			
-						{%if relationtmp in dagou%}		
-						<li class="{{relationtmp}}">{{relationtmp}}dagou</li>	
-							{%if relationtmp in qita%}
-								{%set del line['其他'][relationtmp]%}
-							{%end %}
-						{%else%}
-						<li class="{{relationtmp}}">{{vaule}}</li>
-						{%set line['其他']["{{relationtmp}}"]%}
-						{%end%}
+					{%if relationtmp not in qita%}	
+						<!-- add to qita -->						
+						{%set line['其他'][relationtmp] =vaule%}
+					{%else%}
+						{%set del line['其他'][relationtmp]%}	
+						{%set line['其他'][relationtmp] =vaule%}
 					{%end%}			
 				{%end%}		
 				<li class="{{lline}}">"{{lline}}":{{vaule}}</li>			
 			{%else %}
 				<label>未知的列名:{{lline}}</label>
 			{%end%}
+		{%end%}
 		{%end%}	
 	</ul>
 	<ul class="shoujianfang">
 		{%for lline,vaule in line['收件方'].items()%}
-		
-		
+		{%if vaule !=" "%}
 			{%if lline in shoujianfang %}
+				{%if  lline in relation%}
+					{%set relationtmp=relation[lline]%}
+					{%if relationtmp not in qita%}	
+						<!-- add to qita -->						
+						{%set line['其他'][relationtmp] =vaule%}
+					{%else%}
+						{%set del line['其他'][relationtmp]%}	
+						{%set line['其他'][relationtmp] =vaule%}
+					{%end%}			
+				{%end%}		
+				<li class="{{lline}}">"{{lline}}":{{vaule}}</li>			
+			{%else %}
+				<label>未知的列名:{{lline}}</label>
+			{%end%}
+		{%end%}
+		
+		<!-- 	{%if lline in shoujianfang %}
 				{%if  lline in relation%}
 					{%set relationtmp=relation[lline]%}
 					{%if relationtmp in qita%}	
@@ -76,7 +101,7 @@
 							{%end %}
 						{%else%}
 						<li class="{{relationtmp}}">{{vaule}}</li>
-						{%set line['其他']["{{relationtmp}}"]%}
+						{%set line['其他']["relationtmp"]%}
 					{%end%}			
 				{%end%}
 				{%end%}
@@ -84,22 +109,18 @@
 				{%else %}
 				<label>未知的列名:{{lline}}</label>
 			{%end%}
-		
+		 -->
 		{%end%}
 	</ul>
 	<ul class="qita">
-		{%for lline,vaule in line['其他'].items()%}		
-			{%if lline in qita %}
-				{%if  lline in relation%}
-					{%set relationtmp=relation[lline]%}
-					{%if relationtmp in dagou%}					
-						<li class="{{relationtmp}}">{{relationtmp}}</li>				
-					{%end%}
-				{%end%}
-				<li class="{{lline}}">"{{lline}}":{{vaule}}</li>
-				
+		{%for lline,vaule in line['其他'].items()%}	
+		{%if vaule !=" "%}	
+			{%if lline in qita and lline in dagou %}
+				<li class="{{lline}}">{{lline}}dagou</li>				
+			{%else%}
+				<li class="{{lline}}">"{{lline}}":{{vaule}}</li>				
 			{%end%}
-		
+		{%end%}
 		{%end%}
 	</ul>
 </div>
