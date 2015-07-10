@@ -44,7 +44,7 @@
 </div> 
  -->
  <div class="print">
- 	<object classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2" id="wb" height="0" width="0"></object>
+ 	<object classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2" id="wb" height="0px" width="0px"></object>
 
 <!--  	<input id="printclick" class="noprint" type="button" value="打印" onclick="pagesetup_null();document.all.wb.ExecWB(6,1)" /> -->
 
@@ -111,27 +111,6 @@
 				<label>未知的列名:{{lline}}</label>
 			{%end%}
 		{%end%}
-		
-		<!-- 	{%if lline in shoujianfang %}
-				{%if  lline in relation%}
-					{%set relationtmp=relation[lline]%}
-					{%if relationtmp in qita%}	
-						{%if relationtmp in dagou%}					
-						<li class="{{relationtmp}}">{{relationtmp}}dagou</li>	
-							{%if relationtmp in qita%}
-								{%set del line['其他'][relationtmp]%}
-							{%end %}
-						{%else%}
-						<li class="{{relationtmp}}">{{vaule}}</li>
-						{%set line['其他']["relationtmp"]%}
-					{%end%}			
-				{%end%}
-				{%end%}
-				<li class="{{lline}}">"{{lline}}":{{vaule}}</li>
-				{%else %}
-				<label>未知的列名:{{lline}}</label>
-			{%end%}
-		 -->
 		{%end%}
 	</ul>
 	<ul class="qita">

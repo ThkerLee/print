@@ -1,7 +1,8 @@
 
-/*16:10  0.8480;
+/*16/(16^2+10^2)kaigenhao
+16:10  0.8480;
 4:3 	0.8000;
-16:9   0.8716
+16:9   0.8716      
 15inc 1024*768   4:3  	15*2.54cm*0.8000/1024=0.0297cm*/
 .body{
 	/*position: relative;*/
@@ -64,7 +65,7 @@
 	/*1px=25cm,23cm*/
 	/*1pt=0.35mm,23cm=676.5pt*/
 	font-size: 18px; 
-	width: 905.5px;  
+	width: 906px;  
 	background-color: red
 }
 .print{
@@ -75,9 +76,6 @@
 	z-index: 9;
 }
 .print input{
-	margin: 0px auto;
-}
-.print object{
 	margin: 0px auto;
 }
 ul{	
@@ -93,7 +91,7 @@ li{
 	margin: 0px auto 0px auto;
 	width: 905.5px;
 	/*width: 654.8px;*/
-	height: 500px;
+	height: 499px;
 /*	height: 359.9px;*/
 	/*background-image: url(./image/yuezhong.jpg);*/
 	background-repeat: no-repeat;
