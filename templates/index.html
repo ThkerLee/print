@@ -7,22 +7,23 @@
 	<script type="text/javascript" src="{{static_url("jquery.jqprint.js")}}"></script>
 
 	<script type="text/javascript">
-	$(document).ready(function(){
-	$("div.list").find('div').hover(
-	function(){	
-	$(this).css({'z-index' : '10'});		
-	$(this).find('img').addClass("hover").stop()
-	.animate({
+	$(document).ready(
+	function(){
+		$("div.list div:even").hover(
+		function(){	
+		$(this).css({'z-index' : '10'});		
+		$(this).find('img').addClass("hover").stop()
+		.animate({
 					marginTop:'-20px',
 					marginLeft:'-75px',
 					marginRight:'-75px',
 					marginButtom:'-130px',
 					height:'300px',
 					width:'400px',
-					},200);}
-	 ,function(){
+					},10);}
+	 	,function(){
 	 	$(this).css({'z-index' : '0'});
-	$(this).find('img').removeClass("hover").stop()
+		$(this).find('img').removeClass("hover").stop()
 	.animate({
 					marginTop:'0px',
 					marginLeft:'0px',
@@ -30,11 +31,19 @@
 					marginButtom:'0px',
 					height:'150px',
 					width:'250px',
-					},200);}
-	)
+					},10);}
+	);}
+);
+</script>
+<script type="text/javascript">
+	$(document).ready(
+		function(){
+			$("div.list div:even").click(function(){
+			$(this).next().removeClass("upform");
+			$(this).next().addClass("upformpop");
 	});
-	
-	</script>
+});
+</script>
 </head>
 <body>
 <div class="body">
@@ -48,9 +57,17 @@
 
 		<div class="list">
 			{% for danju in list %}
+			
 				<div class="{{danju[0]}}">
-					<a href="/detail/{{danju[1]}}.html"><img src="./static/image/{{danju[2]}}"></a>
+					<a><img src="./static/image/{{danju[2]}}"></a>
 				</div>
+				<div class="upform">
+					<form action=""   enctype="multipart/form-data" method="post" target="_blank">
+						<p>选择批量文件Csv:<input type="file" name='printcvsfile'/>
+					<input type="submit" id='upclick' value="Submit" /></p>
+					</form>
+				</div>
+		
 			{% end %}
 		</div>
 	</div>

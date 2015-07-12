@@ -50,6 +50,22 @@
 	width: 100%;
 
 }
+.upform{
+	visibility: hidden;
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+.upformpop{
+	visibility: visible;
+	position:absolute;
+	left:350px;
+	top:250px;
+	width: 200px;
+	height: 200px;
+	display:block;
+
+}
 .print_demo_top{
 	width: 100%;
 	height: 25px;
