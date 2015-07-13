@@ -1,20 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0　Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <html>
 <head>
 <script type="text/javascript" src="{{static_url("jquery")}}"></script>
 <script type="text/javascript" src="{{static_url("jquery.jqprint.js")}}"></script>
 <script type="text/javascript">
 $(document).ready(
-	var screenx=$(window).width();
-	var screeny=$(window).height();
-	for (line in arry)
-		for (vaule in line)
-		{
-			alert(vaule);
-		}
-)
+
+	 
+	 function setprintcss(){
+	 	var boxarry=new Array();
+	 	boxarry=[['客户号码','23','34535'],['始发地','3.1','4.5']];
+	 	// boxarry={{boxlist}};
+		var screenx=$(window).width();
+		var screeny=$(window).height();
+		for (key in boxarry)
+			for(key1 in boxarry[key])
+				alert(boxarry[key][key1])		
+	}	
+);
 </script>
 </head>
 <body>
-	
+	tt
 </body>
 </html>

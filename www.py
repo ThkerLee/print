@@ -22,16 +22,12 @@ class mainhandler(tornado.web.RequestHandler):
 class test(tornado.web.RequestHandler):
 	def get(self):
 		danjumingchen='yuezhong.html'
-		yuezhongbox=[['客户号码','3.1','1.5'],['始发地','3.1','4.5']]
+		yuezhongbox=[[u'客户号码',u'3.1',u'1.5'],[u'始发地',u'3.1',u'4.5']]
 		
 		danjumingchen=danjumingchen[:-5]
 		if danjumingchen=='yuezhong':
 			sboxlist=yuezhongbox
 		self.render("test.html",boxlist=sboxlist)
-class print_demo_frame(tornado.web.RequestHandler):
-	def get(self,danjumingchen):
-		self.render("print_demo_frame.html,,mingchen=danjumingchen")
-
 class print_demo(tornado.web.RequestHandler):
 
 	def get(self,danjumingchen):

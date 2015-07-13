@@ -33,15 +33,21 @@
 
 <script type="text/javascript">
 $(document).ready(
-	var screenx=$(window).width();
-	var screeny=$(window).height();
-	for (line in arry)
-		for (vaule in line)
-		{
-			alert(vaule);
-		}
-)
+
+	 
+	 function setprintcss(){
+	 	var boxarry=new Array();
+	 	boxarry=[['客户号码','23','34535'],['始发地','3.1','4.5']];
+	 	// boxarry={{boxlist}};
+		var screenx=$(window).width();
+		var screeny=$(window).height();
+		for (key in boxarry)
+			for(key1 in boxarry[key])
+				alert(boxarry[key][key1])		
+	}	
+);
 </script>
+
 <style media="print">
 	<!--
 	.noprint{display:none;}
