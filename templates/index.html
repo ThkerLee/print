@@ -44,6 +44,16 @@
 	});
 });
 </script>
+<script type="text/javascript">
+	$(document).ready(
+		function(){
+			$(".uploadclick").click(function(){
+
+			$(this).parent().parent().parent().removeClass("upformpop");
+			$(this).parent().parent().parent().addClass("upform");
+	});
+});
+</script>
 </head>
 <body>
 <div class="body">
@@ -62,9 +72,10 @@
 					<a><img src="./static/image/{{danju[2]}}"></a>
 				</div>
 				<div class="upform">
-					<form action=""   enctype="multipart/form-data" method="post" target="_blank">
+					<form action="detail/{{danju[1]}}.html"   enctype="multipart/form-data" method="post" target="_blank">
 						<p>选择批量文件Csv:<input type="file" name='printcvsfile'/>
-					<input type="submit" id='upclick' value="Submit" /></p>
+							<input type="submit" class="uploadclick"value="Submit" />
+						</p>
 					</form>
 				</div>
 		

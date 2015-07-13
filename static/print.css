@@ -55,33 +55,28 @@
 	position:absolute;
 	left:0px;
 	top:0px;
+	height: 0px;
+	width: 0px;
 }
 .upformpop{
 	visibility: visible;
 	position:absolute;
-	left:350px;
-	top:250px;
-	width: 200px;
+	left:450px;
+	top:150px;
+	width: 300px;
 	height: 200px;
 	display:block;
+	z-index: 100;
+	background-color: grey;
+}
 
-}
-.print_demo_top{
-	width: 100%;
-	height: 25px;
-	
-
-}
-.print_demo_top_form{
-	margin: 0px auto;
-	width: 450px;
-}
 .print_detail{
 	margin: 0px auto 0px auto;
 	/*1px=25cm,23cm*/
 	/*1pt=0.35mm,23cm=676.5pt*/
 	font-size: 18px; 
-	width: 906px;  
+	/*width: 906px;  */
+	width: 1018px;
 	background-color: red
 }
 .print{
@@ -103,16 +98,18 @@ li{
 }
 
 .yuezhong{
+	float: left;
+	margin-top: 1px;
 	position: relative;
 	margin: 0px auto 0px auto;
-	width: 905.5px;
+	width: 1018px;
 	/*width: 654.8px;*/
-	height: 499px;
+	height: 599.7px;
 /*	height: 359.9px;*/
 	/*background-image: url(./image/yuezhong.jpg);*/
-	background-repeat: no-repeat;
-	background-size: 95%;
-
+/*	background-repeat: no-repeat;
+	background-size: 100%;
+*/
 
 }
 .yuezhong img{

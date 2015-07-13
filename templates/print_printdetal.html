@@ -30,6 +30,18 @@
 		}catch(e){}
 }
 </script>
+
+<script type="text/javascript">
+$(document).ready(
+	var screenx=$(window).width();
+	var screeny=$(window).height();
+	for (line in arry)
+		for (vaule in line)
+		{
+			alert(vaule);
+		}
+)
+</script>
 <style media="print">
 	<!--
 	.noprint{display:none;}
@@ -67,10 +79,10 @@
 {%set qita=tuple(xiangmu[2]['其他'])%}
 {%set relation=xiangmu[4]['relation']%}
 
-
+<a id="test" href=""></a>
 
 	{% for line in printdata %}
-<div class="{{mingchen}}" ><img src="/static/image/{{mingchen}}.jpg">
+<div class="{{mingchen}}" ><img class="noprint" src="/static/image/{{mingchen}}.jpg">
 	<ul class="fajianfang">
 		{%for lline,vaule in line['发件方'].items()%}
 		{%if vaule !=" "%}

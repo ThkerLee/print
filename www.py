@@ -19,10 +19,18 @@ class mainhandler(tornado.web.RequestHandler):
 		
 		]
 		self.render("index.html",list=printlist)
-
+class test(tornado.web.RequestHandler):
+	def get(self):
+		danjumingchen='yuezhong.html'
+		yuezhongbox=[['客户号码','3.1','1.5'],['始发地','3.1','4.5']]
+		
+		danjumingchen=danjumingchen[:-5]
+		if danjumingchen=='yuezhong':
+			sboxlist=yuezhongbox
+		self.render("test.html",boxlist=sboxlist)
 class print_demo_frame(tornado.web.RequestHandler):
 	def get(self,danjumingchen):
-		self.render("print_demo_frame.html",mingchen=danjumingchen)
+		self.render("print_demo_frame.html,,mingchen=danjumingchen")
 
 class print_demo(tornado.web.RequestHandler):
 
@@ -40,9 +48,13 @@ class print_demo(tornado.web.RequestHandler):
 			,{'打勾':('非货样','现付','货样','月结','速递','到付','空运')}
 			,{'relation':{'客户号码':'月结'}}
 		)
+		yuezhongbox=[['客户号码','3.1','1.5'],['始发地','3.1','4.5']]
+		
 		danjumingchen=danjumingchen[:-5]
 		if danjumingchen=='yuezhong':
 			xiangmu1=yuezhong
+			sboxlist=yuezhongbox
+		
 		now=datetime.now()
 		now=now.strftime("%Y%m%d%H%M%S")
 		upload_path=os.path.join(os.path.dirname(__file__),"files")
@@ -94,7 +106,7 @@ class print_demo(tornado.web.RequestHandler):
 				sourcedata.append(tmp.copy())
 				tmp.clear()			
 
-		self.render("print_printdetal.html",printdata=sourcedata,mingchen=danjumingchen,xiangmu=xiangmu1)
+		self.render("print_printdetal.html",printdata=sourcedata,boxlist=sboxlist,mingchen=danjumingchen,xiangmu=xiangmu1)
 			# for line in reader:
 			# 	line=('').join(list(line))
 			# 	self.write(line)
@@ -110,12 +122,9 @@ def main():
 	app=tornado.web.Application(
 		[
 		(r"/",mainhandler),
- 
-	 	(r"/detail/(.*)",print_demo_frame),
-	 	(r"/frame/(.*)/print_demo.html",print_demo)
-	 	
-
-		
+ 		(r"/detail/(.*)",print_demo),
+ 		(r"/test",test),
+	
 		# (r"/templates/left-nav.html",left_nav),
 		# (r"/templates/right-nav.html",right_nav),
 		# (r"/templates/top-nav.html",top_nav),
