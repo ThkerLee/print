@@ -8,46 +8,101 @@
 	<script type="text/javascript" src="{{static_url("jquery.jqprint.js")}}"></script>
 <script type="text/javascript">
 	var hkey_root,hkey_path,hkey_key;
-	hkey_root="HKEY_CURRENT_USER";
-	<!--地址的写法很严格的用双斜杠-->
-	hkey_path="/Software/Microsoft/Internet Explorer/PageSetup";
+		hkey_root="HKEY_CURRENT_USER";
+		<!--地址的写法很严格的用双斜杠-->
+		hkey_path="\\Software\\Microsoft\\Internet Explorer\\PageSetup\\";
 	//设置网页打印的页眉页脚为空
 	function pagesetup_null(){
 	try{
 		var RegWsh = new ActiveXObject("WScript.Shell");
-		hkey_key="/header";
+		hkey_key="header";
 		RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"");
-		hkey_key="/footer";
+		hkey_key="footer";
 		RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"");
 		hkey_key = "margin_top";
-        RegWsh.RegWrite(hkey_root + hkey_path + hkey_key, "0");
+        RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"0");
         hkey_key = "margin_bottom";
-        RegWsh.RegWrite(hkey_root + hkey_path + hkey_key, "0");
+        RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"0");
         hkey_key = "margin_left";
-        RegWsh.RegWrite(hkey_root + hkey_path + hkey_key, "0");
+        RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"0");
         hkey_key = "margin_right";
-        RegWsh.RegWrite(hkey_root + hkey_path + hkey_key, "0");
+        RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"0");
 		}catch(e){}
+}
+function PageSetup_Default()
+	{
+	try{
+		var RegWsh = new ActiveXObject( "WScript.Shell ") ;
+		hkey_key= "header " ;
+		RegWsh.RegWrite(hkey_root+hkey_path+hkey_key, "&w&b页码，&p/&P ") ;
+		hkey_key= "footer " ;
+		RegWsh.RegWrite(hkey_root+hkey_path+hkey_key, "&u&b&d ") ;
+}
+catch(e){}
+} 
+function printviewer(){
+pagesetup_null();
+wb.ExecWB(7,1);
+PageSetup_Default();
 }
 </script>
 
 <script type="text/javascript">
-$(document).ready(
-
-	 
+$(document).ready(	 
 	 function setprintcss(){
 	 	var boxarry=new Array();
-	 	boxarry=[{'客户号码':['2.8','0.5','1.6','3.3']},{'始发地':['4.8','0.5','4.4','3.1']}];
+	 	boxarry=[
+	 		{'发件方':[['客户号码','2.8','0.5','1.6','3.1']
+	 		,['始发地','4.8','0.5','4.4','3.1']
+	 		,['公司名称','4.8','0.5','4.4','3.1']
+	 		,['地址','4.8','0.5','4.4','3.1']
+	 		,['寄件人签名','4.8','0.5','4.4','3.1']
+	 		,['电话','4.8','0.5','4.4','3.1']
+	 		,['委托货物内容','4.8','0.5','4.4','3.1']
+	 		,['备注','4.8','0.5','4.4','3.1']]
+	 		}
+	 		,{'收件方':[['目的地','4.8','0.5','4.4','3.1']
+	 		,['日期','4.8','0.5','4.4','3.1']
+	 		,['公司名称','4.8','0.5','4.4','3.1']
+	 		,['地址','4.8','0.5','4.4','3.1']
+	 		,['收件人','4.8','0.5','4.4','3.1']
+	 		,['电话','4.8','0.5','4.4','3.1']
+	 		,['体积重量','4.8','0.5','4.4','3.1']]
+	 		}
+	 		,{'其他':[['件数','4.8','0.5','4.4','3.1']
+	 		,['重量','4.8','0.5','4.4','3.1']
+	 		,['非货样','4.8','0.5','4.4','3.1']
+	 		,['现付','4.8','0.5','4.4','3.1']
+	 		,['货样','4.8','0.5','4.4','3.1']
+	 		,['月结','4.8','0.5','4.4','3.1']
+	 		,['速递','4.8','0.5','4.4','3.1']
+	 		,['到付','4.8','0.5','4.4','3.1']
+	 		,['空运','4.8','0.5','4.4','3.1']
+	 		,['总计','4.8','0.5','4.4','3.1']]
+	 		}
+	 		];
 		var screenx=screen.width;
 		var screeny=screen.height;
 		var name,wid,hei,lef,top;
-		for (arr in boxarry)
-			for (key in boxarry[arr]){
-				$("."+key);
-				for(key0 in boxarry[arr][key])
-					alert(boxarry[arr][key][key0])
-				}
 
+		// alert(boxarry['其他']);
+		for(key in boxarry){
+			for (key0 in boxarry[key]){
+				for (var i=0;i<boxarry[key][key0].length;i++){			
+					name=boxarry[key][key0][i][0];
+					wid=boxarry[key][key0][i][1]/0.026458 +'px';
+					hei=boxarry[key][key0][i][2]/0.026458 +'px';
+					lef=boxarry[key][key0][i][3]/0.026458 +'px'; 
+					top=boxarry[key][key0][i][4]/0.026458 +'px';
+					$("." +name).css("width",wid);
+					$("." +name).css("height",hei);	
+					$("." +name).css("left",lef);	
+					$("." +name).css("top",top);
+					$("." +name).css("position","absolute");
+							
+				}
+			}
+		}
 	}	
 );
 </script>
@@ -66,12 +121,12 @@ $(document).ready(
 </div> 
  -->
  <div class="print">
- 	<object classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2" id="wb" height="0px" width="0px"></object>
+ 	<object classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2" id="WB" name="wb" height="0px" width="0px"></object>
 
 <!--  	<input id="printclick" class="noprint" type="button" value="打印" onclick="pagesetup_null();document.all.wb.ExecWB(6,1)" /> -->
 
- 	<input type="button" class="noprint" value="打印" onclick="pagesetup_null();document.all.wb.ExecWB(7,1)" />
- 	<input type="button" class="noprint" value="页面设置" onclick="pagesetup_null();document.all.wb.ExecWB(8,1)" />
+ 	<input type="button" class="noprint" value="打印" onclick="printviewer()" />
+ 	<input type="button" class="noprint" value="页面设置" onclick="document.all.wb.ExecWB(8,1)" />
 </div> 
 
 <div class="print_detail"> 
@@ -107,7 +162,7 @@ $(document).ready(
 						{%set line['其他'][relationtmp] =vaule%}
 					{%end%}			
 				{%end%}		
-				<li class="{{lline}}">"{{lline}}":{{vaule}}</li>			
+				<li class="{{lline}}">{{vaule}}</li>			
 			{%else %}
 				<label>未知的列名:{{lline}}</label>
 			{%end%}
@@ -128,7 +183,7 @@ $(document).ready(
 						{%set line['其他'][relationtmp] =vaule%}
 					{%end%}			
 				{%end%}		
-				<li class="{{lline}}">"{{lline}}":{{vaule}}</li>			
+				<li class="{{lline}}">{{vaule}}</li>			
 			{%else %}
 				<label>未知的列名:{{lline}}</label>
 			{%end%}
