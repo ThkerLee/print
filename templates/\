@@ -37,17 +37,15 @@ $(document).ready(
 	 
 	 function setprintcss(){
 	 	var boxarry=new Array();
-	 	boxarry=[{'客户号码':['2.8','0.5','1.6','3.3']},{'始发地':['4.8','0.5','4.4','3.1']}];
-		var screenx=screen.width;
-		var screeny=screen.height;
-		var name,wid,hei,lef,top;
-		for (arr in boxarry)
-			for (key in boxarry[arr]){
-				$("."+key);
-				for(key0 in boxarry[arr][key])
-					alert(boxarry[arr][key][key0])
-				}
-
+	 	boxarry=[['客户号码','23','34535'],['始发地','3.1','4.5']];
+	 	// boxarry={{boxlist}};
+		var screenx=$(window).width();
+		var screeny=$(window).height();
+		for (key in boxarry)
+			for(key1 in boxarry[key])
+				alert(boxarry[key][key1])
+		alert(screenx);
+		alert(screeny);		
 	}	
 );
 </script>
