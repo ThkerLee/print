@@ -17,9 +17,7 @@ class mainhandler(tornado.web.RequestHandler):
 	def get(self):
 		printlist=[
 		("listpic","yuezhong","yuezhong.jpg")
-		,("listpic","yuezhong","yuezhong.jpg")
-		
-		
+#		,("listpic","shunfeng","shunfeng.jpg")
 		]
 		self.render("index.html",list=printlist)
 class test(tornado.web.RequestHandler):
@@ -42,15 +40,12 @@ class print_demo(tornado.web.RequestHandler):
 			{'发件方':('客户号码','始发地','公司名称','地址','寄件人签名','电话','委托货物内容','备注')}
 			,{'收件方':('目的地','日期','公司名称','地址','收件人','电话','体积重量')}
 			,{'其他':('非货样','现付','货样','月结','速递','到付','空运','件数','重量')}
-			,{'打勾':('非货样','现付','货样','月结','速递','到付','空运')}
+			,{'打勾':('非货样','现付','货样','月结','速递','到付','空运','其它')}
 			,{'relation':{'客户号码':'月结'}}
 		)
-		yuezhongbox=[['客户号码','3.1','1.5'],['始发地','3.1','4.5']]
-		
 		danjumingchen=danjumingchen[:-5]
 		if danjumingchen=='yuezhong':
 			xiangmu1=yuezhong
-			sboxlist=yuezhongbox
 		
 		now=datetime.now()
 		now=now.strftime("%Y%m%d%H%M%S")
@@ -115,7 +110,7 @@ class print_demo(tornado.web.RequestHandler):
 				sourcedata.append(tmp.copy())
 				tmp.clear()			
 
-		self.render("print_printdetal.html",he=head,re=reader,printdata=sourcedata,boxlist=sboxlist,mingchen=danjumingchen,xiangmu=xiangmu1)
+		self.render("print_printdetal.html",printdata=sourcedata,mingchen=danjumingchen,xiangmu=xiangmu1)
 			# for line in reader:
 			# 	line=('').join(list(line))
 			# 	self.write(line)

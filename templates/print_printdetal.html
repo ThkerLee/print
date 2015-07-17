@@ -51,7 +51,7 @@ PageSetup_Default();
 $(document).ready(	 
 	 function setprintcss(){
 	 	var boxarry=new Array();
-	 	boxarry=[
+	 	yuezhongbox=[
 	 		{'发件方':[['客户号码','2.8','0.5','1.6','3.1']
 	 		,['始发地','4.8','0.5','4.5','3.1']
 	 		,['公司名称','6.5','1.2','2.8','3.8']
@@ -71,16 +71,18 @@ $(document).ready(
 	 		}
 	 		,{'其他':[['件数','4.8','0.7','17.5','4.7']
 	 		,['重量','4.8','0.7','19.5','4.7']
-	 		,['非货样','0.4','0.4','17.1','5.6']
-	 		,['现付','0.4','0.4','19.0','5.6']
-	 		,['货样','0.4','0.4','17.1','6.4']
-	 		,['月结','0.4','0.4','19.0','6.4']
-	 		,['速递','0.4','0.4','17.1','7.1']
-	 		,['到付','0.4','0.4','19.0','7.1']
-	 		,['空运','0.4','0.4','17.1','7.9']
-	 		,['总计','0.4','0.4','19.0','7.9']]
+	 		,['非货样','0.4','0.4','17.1','5.5']
+	 		,['现付','0.4','0.4','19.0','5.5']
+	 		,['货样','0.4','0.4','17.1','6.3']
+	 		,['月结','0.4','0.4','19.0','6.3']
+	 		,['速递','0.4','0.4','17.1','7.0']
+	 		,['到付','0.4','0.4','19.0','7.0']
+	 		,['空运','0.4','0.4','17.1','7.8']
+	 		,['总计','0.4','0.4','19.0','7.8']]
 	 		}
 	 		];
+		//shunfengbox=[{''[]}];
+		boxarry={{mingchen}}box;
 		var screenx=screen.width;
 		var screeny=screen.height;
 		var name,wid,hei,lef,top;
@@ -94,8 +96,8 @@ $(document).ready(
 					name=boxarry[key][key0][i][0];
 					wid=boxarry[key][key0][i][1]/0.026458+'px';
 					hei=boxarry[key][key0][i][2]/0.026458+'px';
-					lef=boxarry[key][key0][i][3]/0.026458 +4+'px'; 
-					top=boxarry[key][key0][i][4]/0.026458 +2+'px';
+					lef=boxarry[key][key0][i][3]/0.026458+'px'; 
+					top=boxarry[key][key0][i][4]/0.026458+'px';
 
 					$("."+sname + " "+"." +name).css("width",wid);
 					$("." +sname + " "+"." +name).css("height",hei);	
@@ -106,11 +108,11 @@ $(document).ready(
 				}
 			}
 		}
-		wid=23.2/0.026458 -2+'px';
-		hei=12.87/0.026458+'px';
-
-		$("."+{{mingchen}}).css("width",wid);
-		$("."+{{mingchen}}).css("height",hei);
+		wid=23.1/0.0264583+'px';
+		hei=12.7/0.0264583+'px';
+		$(".{{mingchen}}").css("width",wid);
+		$(".{{mingchen}}").css("height",hei);
+		$(".print_detail").css("width",wid);
 
 	}	
 );
@@ -139,9 +141,6 @@ $(document).ready(
 </div> 
 
 <div class="print_detail"> 
-
-<!-- {{printdata}} <br/>-->
-
 <!-- ({发件方:{客户号码:tt,始发地:ttt,}},{收件方:{目的地:tt,日期:ttt;}}
 ,{发件方:{客户号码:tt,始发地:ttt,}},{收件方:{目的地:tt,日期:ttt;}}
 ,{其他:{bei:tt}}
@@ -152,7 +151,6 @@ $(document).ready(
 {%set dagou=list(xiangmu[3]['打勾'])%}
 {%set qita=tuple(xiangmu[2]['其他'])%}
 {%set relation=xiangmu[4]['relation']%}
-<a id="test" href=""></a>
 
 	{% for line in printdata %}
 <div class="{{mingchen}}" ><img class="noprint" src="/static/image/{{mingchen}}.jpg">
@@ -162,15 +160,14 @@ $(document).ready(
 			{%if lline in fajianfang %}
 				{%if  lline in relation%}
 					{%set relationtmp=relation[lline]%}
-					{%if relationtmp not in qita%}	
-						<!-- add to qita -->						
-						{%set line['其他'][relationtmp] =vaule%}
-					{%else%}
-						{%set del line['其他'][relationtmp]%}	
-						{%set line['其他'][relationtmp] =vaule%}
+					{%if relationtmp  in qita%}	
+						{%if relationtmp in dagou%}
+							 <li class="{{lline}}">✔</li>
+						{%end%}
 					{%end%}			
-				{%end%}		
-				<li class="{{lline}}">{{vaule}}</li>			
+				{%else%}		
+				<li class="{{lline}}">{{vaule}}</li>
+				{%end%}			
 			{%else %}
 				<label>未知的列名:{{lline}}</label>
 			{%end%}
@@ -183,15 +180,14 @@ $(document).ready(
 			{%if lline in shoujianfang %}
 				{%if  lline in relation%}
 					{%set relationtmp=relation[lline]%}
-					{%if relationtmp not in qita%}	
-						<!-- add to qita -->						
-						{%set line['其他'][relationtmp] =vaule%}
-					{%else%}
-						{%set del line['其他'][relationtmp]%}	
-						{%set line['其他'][relationtmp] =vaule%}
+					{%if relationtmp  in qita%}
+                                              	{%if relationtmp in dagou%}
+                                                        <li class="{{lline}}">✔</li>
+                                                {%end%}
 					{%end%}			
-				{%end%}		
-				<li class="{{lline}}">{{vaule}}</li>			
+				{%else %}		
+				<li class="{{lline}}">{{vaule}}</li>
+				{%end%}			
 			{%else %}
 				<label>未知的列名:{{lline}}</label>
 			{%end%}
