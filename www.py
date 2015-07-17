@@ -1,5 +1,8 @@
+#coding:utf-8
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 
-#coding=utf-8
 import csv
 import tornado.ioloop
 import tornado.web
@@ -22,8 +25,6 @@ class mainhandler(tornado.web.RequestHandler):
 class test(tornado.web.RequestHandler):
 	def get(self):
 		danjumingchen='yuezhong.html'
-		yuezhongbox=[[u'客户号码',u'3.1',u'1.5'],[u'始发地',u'3.1',u'4.5']]
-		
 		danjumingchen=danjumingchen[:-5]
 		if danjumingchen=='yuezhong':
 			sboxlist=yuezhongbox
@@ -67,11 +68,21 @@ class print_demo(tornado.web.RequestHandler):
 				up.write(meta['body'])
 			#/////////
 			datafile=open(filepath,'r')
-			reader=csv.reader(datafile)	
+			reader=csv.reader(datafile)
 			# line=('').join(list(head))
 			# self.write(line)
+			shead=list()
 			head=list(reader.next())
+			for key in head:
+				shead.append(unicode(key,'gb2312'))
+			head=shead
 			reader=list(reader)
+			# sreader=list()
+			# for line in reader:
+			# 	if key !="":
+			# 	sreader.append(unicode(key,'gb2312'))
+			# reader=sreader
+		# self.render("test.html",re=wreader)
 			i=0
 			x=0
 			y=0
@@ -81,6 +92,7 @@ class print_demo(tornado.web.RequestHandler):
 			qita=dict()	
 			dic=dict()
 			tmp=dict()
+		
 			for line in reader:
 				for key in line:
 
@@ -93,6 +105,7 @@ class print_demo(tornado.web.RequestHandler):
 					elif head[i]=="其他":
 						dic=qita
 					elif key !="":
+						key=unicode(key,'gb2312')
 						dic[head[i]]=key
 					i=i+1
 				i=0
@@ -102,7 +115,7 @@ class print_demo(tornado.web.RequestHandler):
 				sourcedata.append(tmp.copy())
 				tmp.clear()			
 
-		self.render("print_printdetal.html",printdata=sourcedata,boxlist=sboxlist,mingchen=danjumingchen,xiangmu=xiangmu1)
+		self.render("print_printdetal.html",he=head,re=reader,printdata=sourcedata,boxlist=sboxlist,mingchen=danjumingchen,xiangmu=xiangmu1)
 			# for line in reader:
 			# 	line=('').join(list(line))
 			# 	self.write(line)

@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0　Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <html>
 <head>
 	<title>Welcome NexERP</title>
@@ -53,32 +53,32 @@ $(document).ready(
 	 	var boxarry=new Array();
 	 	boxarry=[
 	 		{'发件方':[['客户号码','2.8','0.5','1.6','3.1']
-	 		,['始发地','4.8','0.5','4.4','3.1']
-	 		,['公司名称','4.8','0.5','4.4','3.1']
-	 		,['地址','4.8','0.5','4.4','3.1']
-	 		,['寄件人签名','4.8','0.5','4.4','3.1']
-	 		,['电话','4.8','0.5','4.4','3.1']
-	 		,['委托货物内容','4.8','0.5','4.4','3.1']
-	 		,['备注','4.8','0.5','4.4','3.1']]
+	 		,['始发地','4.8','0.5','4.5','3.1']
+	 		,['公司名称','6.5','1.2','2.8','3.8']
+	 		,['地址','6.5','2.0','2.8','5.2']
+	 		,['寄件人签名','5.0','0.5','4.0','7.5']
+	 		,['电话','7.0','0.5','2.3','8.3']
+	 		,['委托货物内容','6.0','0.5','3.0','9.0']
+	 		,['备注','6.3','0.5','2.8','9.8']]
 	 		}
-	 		,{'收件方':[['目的地','4.8','0.5','4.4','3.1']
-	 		,['日期','4.8','0.5','4.4','3.1']
-	 		,['公司名称','4.8','0.5','4.4','3.1']
-	 		,['地址','4.8','0.5','4.4','3.1']
-	 		,['收件人','4.8','0.5','4.4','3.1']
-	 		,['电话','4.8','0.5','4.4','3.1']
-	 		,['体积重量','4.8','0.5','4.4','3.1']]
+	 		,{'收件方':[['目的地','3.0','0.5','9.4','3.1']
+	 		,['日期','4.4','0.5','12.4','3.1']
+	 		,['公司名称','6.5','1.2','10.5','3.8']
+	 		,['地址','6.5','2.0','10.5','5.2']
+	 		,['收件人','6.5','0.5','10.2','7.5']
+	 		,['电话','7.0','0.5','10.0','8.3']
+	 		,['体积重量','6.5','0.5','10.5','9.0']]
 	 		}
-	 		,{'其他':[['件数','4.8','0.5','4.4','3.1']
-	 		,['重量','4.8','0.5','4.4','3.1']
-	 		,['非货样','4.8','0.5','4.4','3.1']
-	 		,['现付','4.8','0.5','4.4','3.1']
-	 		,['货样','4.8','0.5','4.4','3.1']
-	 		,['月结','4.8','0.5','4.4','3.1']
-	 		,['速递','4.8','0.5','4.4','3.1']
-	 		,['到付','4.8','0.5','4.4','3.1']
-	 		,['空运','4.8','0.5','4.4','3.1']
-	 		,['总计','4.8','0.5','4.4','3.1']]
+	 		,{'其他':[['件数','4.8','0.7','17.5','4.7']
+	 		,['重量','4.8','0.7','19.5','4.7']
+	 		,['非货样','0.4','0.4','17.1','5.6']
+	 		,['现付','0.4','0.4','19.0','5.6']
+	 		,['货样','0.4','0.4','17.1','6.4']
+	 		,['月结','0.4','0.4','19.0','6.4']
+	 		,['速递','0.4','0.4','17.1','7.1']
+	 		,['到付','0.4','0.4','19.0','7.1']
+	 		,['空运','0.4','0.4','17.1','7.9']
+	 		,['总计','0.4','0.4','19.0','7.9']]
 	 		}
 	 		];
 		var screenx=screen.width;
@@ -87,22 +87,31 @@ $(document).ready(
 
 		// alert(boxarry['其他']);
 		for(key in boxarry){
+
 			for (key0 in boxarry[key]){
-				for (var i=0;i<boxarry[key][key0].length;i++){			
+				for (var i=0;i<boxarry[key][key0].length;i++){		
+					sname=key0;	
 					name=boxarry[key][key0][i][0];
-					wid=boxarry[key][key0][i][1]/0.026458 +'px';
-					hei=boxarry[key][key0][i][2]/0.026458 +'px';
-					lef=boxarry[key][key0][i][3]/0.026458 +'px'; 
-					top=boxarry[key][key0][i][4]/0.026458 +'px';
-					$("." +name).css("width",wid);
-					$("." +name).css("height",hei);	
-					$("." +name).css("left",lef);	
-					$("." +name).css("top",top);
-					$("." +name).css("position","absolute");
+					wid=boxarry[key][key0][i][1]/0.026458+'px';
+					hei=boxarry[key][key0][i][2]/0.026458+'px';
+					lef=boxarry[key][key0][i][3]/0.026458 +4+'px'; 
+					top=boxarry[key][key0][i][4]/0.026458 +2+'px';
+
+					$("."+sname + " "+"." +name).css("width",wid);
+					$("." +sname + " "+"." +name).css("height",hei);	
+					$("." +sname + " "+"." +name).css("left",lef);	
+					$("." +sname + " "+"." +name).css("top",top);
+					$("." +sname + " "+"." +name).css("position","absolute");
 							
 				}
 			}
 		}
+		wid=23.2/0.026458 -2+'px';
+		hei=12.87/0.026458+'px';
+
+		$("."+{{mingchen}}).css("width",wid);
+		$("."+{{mingchen}}).css("height",hei);
+
 	}	
 );
 </script>
@@ -143,12 +152,11 @@ $(document).ready(
 {%set dagou=list(xiangmu[3]['打勾'])%}
 {%set qita=tuple(xiangmu[2]['其他'])%}
 {%set relation=xiangmu[4]['relation']%}
-
 <a id="test" href=""></a>
 
 	{% for line in printdata %}
 <div class="{{mingchen}}" ><img class="noprint" src="/static/image/{{mingchen}}.jpg">
-	<ul class="fajianfang">
+	<ul class="发件方">
 		{%for lline,vaule in line['发件方'].items()%}
 		{%if vaule !=" "%}
 			{%if lline in fajianfang %}
@@ -169,7 +177,7 @@ $(document).ready(
 		{%end%}
 		{%end%}	
 	</ul>
-	<ul class="shoujianfang">
+	<ul class="收件方">
 		{%for lline,vaule in line['收件方'].items()%}
 		{%if vaule !=" "%}
 			{%if lline in shoujianfang %}
@@ -190,13 +198,13 @@ $(document).ready(
 		{%end%}
 		{%end%}
 	</ul>
-	<ul class="qita">
+	<ul class="其他">
 		{%for lline,vaule in line['其他'].items()%}	
 		{%if vaule !=" "%}	
 			{%if lline in qita and lline in dagou %}
-				<li class="{{lline}}">{{lline}}dagou</li>				
+				<li class="{{lline}}">✔</li>				
 			{%else%}
-				<li class="{{lline}}">"{{lline}}":{{vaule}}</li>				
+				<li class="{{lline}}">{{vaule}}</li>				
 			{%end%}
 		{%end%}
 		{%end%}

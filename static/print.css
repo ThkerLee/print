@@ -117,13 +117,13 @@ li{
 	width: 100%;
 
 }
-.fajianfang{
+.发件方{
 	width: 220px;
 }
-.shoujianfang{
+.收件方{
 	width: 200px;
 }
-.qita{
+.其他{
 	width: 110pt;
 }
 .shoujianfang div{
@@ -158,7 +158,7 @@ fajianfang .公司名称{
 	height: 45px;
 	width: 220px;
 }
-.fajianfang .地址{
+fajianfang .地址{
 	position: absolute;
 	left: 108px;
 	top: 180px;
@@ -166,7 +166,7 @@ fajianfang .公司名称{
 	width: 220px;
 
 }
-.fajianfang .寄件人签名{
+fajianfang .寄件人签名{
 	position: absolute;
 	left: 135px;
 	top: 260px;
@@ -174,7 +174,7 @@ fajianfang .公司名称{
 	width: 195px;
 
 }
-.fajianfang .电话{
+fajianfang .电话{
 	position: absolute;
 	left: 80px;
 	top: 290px;
@@ -182,7 +182,7 @@ fajianfang .公司名称{
 	width: 240px;
 
 }
-.fajianfang .委托货物内容{
+fajianfang .委托货物内容{
 	position: absolute;
 	left: 108px;
 	top: 320px;
@@ -190,7 +190,7 @@ fajianfang .公司名称{
 	width: 220px;
 
 }
-.fajianfang .备注{
+fajianfang .备注{
 	position: absolute;
 	left: 100px;
 	top: 350px;
@@ -199,7 +199,7 @@ fajianfang .公司名称{
 
 
 }
-.shoujianfang .目的地{
+shoujianfang .目的地{
 	position: absolute;
 	top: 108px;
 	width: 90px;
@@ -207,7 +207,7 @@ fajianfang .公司名称{
 	left: 340px;
 
 }
-.shoujianfang .日期{
+shoujianfang .日期{
 	position: absolute;
 	top: 108px;
 	width: 160px;
@@ -215,7 +215,7 @@ fajianfang .公司名称{
 	left: 440px;
 
 }
-.shoujianfang .公司名称{
+shoujianfang .公司名称{
 	position: absolute;
 	top: 130px;
 	width: 230px;
@@ -223,7 +223,7 @@ fajianfang .公司名称{
 	left: 370px;
 
 }
-.shoujianfang .地址{
+shoujianfang .地址{
 	position: absolute;
 	top: 185px;
 	width: 230px;
@@ -231,7 +231,7 @@ fajianfang .公司名称{
 	left: 370px;
 
 }
-.shoujianfang .收件人{
+shoujianfang .收件人{
 	position: absolute;
 	left: 360px;
 	top: 260px;
@@ -239,7 +239,7 @@ fajianfang .公司名称{
 	width: 220px;
 
 }
-.shoujianfang .电话{
+shoujianfang .电话{
 	position: absolute;
 	left: 355px;
 	top: 290px;
@@ -247,7 +247,7 @@ fajianfang .公司名称{
 	width: 240px;
 
 }
-.shoujianfang .体积重量{
+shoujianfang .体积重量{
 	position: absolute;
 	left: 360px;
 	top: 320px;
@@ -255,14 +255,14 @@ fajianfang .公司名称{
 	width: 240px;
 
 }
-.qita .件数{
+qita .件数{
 	position: absolute;
 	top: 165px;
 	width: 230px;
 	height: 50px;
 	left: 610px;
 }
-.qita .重量{
+qita .重量{
 	position: absolute;
 	top: 165px;
 	width: 230px;
