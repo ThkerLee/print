@@ -22,11 +22,12 @@ class mainhandler(tornado.web.RequestHandler):
 		self.render("index.html",list=printlist)
 class test(tornado.web.RequestHandler):
 	def get(self):
-		danjumingchen='yuezhong.html'
-		danjumingchen=danjumingchen[:-5]
-		if danjumingchen=='yuezhong':
-			sboxlist=yuezhongbox
-		self.render("test.html",boxlist=sboxlist)
+		self.render("test2.html")
+class proxypac(tornado.web.RequestHandler):
+	def get(self):
+		self.render("eaproxy.pac")
+
+	
 class print_demo(tornado.web.RequestHandler):
 
 	def get(self,danjumingchen):
@@ -128,7 +129,7 @@ def main():
 		(r"/",mainhandler),
  		(r"/detail/(.*)",print_demo),
  		(r"/test",test),
-	
+		(r"/eaproxy.pac",proxypac),
 		# (r"/templates/left-nav.html",left_nav),
 		# (r"/templates/right-nav.html",right_nav),
 		# (r"/templates/top-nav.html",top_nav),
